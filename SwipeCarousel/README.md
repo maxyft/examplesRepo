@@ -1,6 +1,6 @@
-# test
+# SwipeCarousel
 
-> A Vue.js project
+> A simple carousel with swipe support based on Hammer.js and setting the displayed number of images.
 
 ## Build Setup
 
