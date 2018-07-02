@@ -1,0 +1,239 @@
+@import 'https://use.fontawesome.com/releases/v5.1.0/css/all.css';
+@import './fonts/FiraSans.css';
+
+@font-face {
+    font-family: 'Stellar Regular';
+    src: url('./fonts/Stellar-Regular.otf') format("opentype");
+}
+
+html {
+  font-size: 10pt;
+  @media (min-width: 1024px) {
+    font-size: 12pt;
+  }
+  @media (min-width: 1280px) {
+    font-size: 14pt;
+  }
+  @media (min-width: 1600px) {
+    font-size: 18pt;
+  }
+  @media (min-width: 1920px) {
+    font-size: 19pt;
+  }
+}
+.outer-wrapper {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  .inner-wrapper {
+    width: 70%;
+    padding-top: 10%;
+    margin: auto;
+    display: flex;
+    .acc-nav-wrapper {
+      z-index: 999;
+      width: 25%;
+      @media (min-width: 1600px) {
+        width: 20%;
+      }
+      .acc-nav {
+        min-height: 150px;
+        max-height: 300px;
+        height: 27.5%;
+        box-shadow: 0 0 13px rgba(31, 44, 96, .13);
+        border-radius: 5px;
+        .nav-list {
+          margin: 0;
+          padding-top: 10%;
+          padding-left: 30px;
+          list-style: decimal;
+          @media (max-width: 1024px) {
+            padding-left: 25px;
+          }
+          @media (min-width: 1920px) {
+            padding-left: 40px;
+          }
+          .nav-list-item {
+            position: relative;
+            font-family: 'Stellar Regular';
+            padding-left: 15px;
+            cursor: pointer;
+            margin: 20px 0;
+            &:first-child { margin-top: 0 }
+            &:last-child { margin-bottom: 0 }
+            &:hover {
+              color: #179c94;
+              & .item-delim::before {
+                transform: translateY(0);
+              }
+            }
+            &.active {
+              color: #179c94;
+              & .item-delim::before {
+                transform: translateY(0);
+              }
+              & .nav-list-paragraph-wrapper {
+                transform: translateX(-7.5px);
+              }
+            }
+            .item-delim {
+              z-index: 999;
+              position: absolute;
+              overflow: hidden;
+              top: 0;
+              left: -30px;
+              @media (max-width: 1024px) {
+                left: -25px;
+              }
+              @media (min-width: 1920px) {
+                left: -40px;
+              }
+              height: 100%;
+              width: 3px;
+              &::before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-color: #179c94;
+                transform: translateY(-100%);
+                transition: .3s transform;
+              }
+            }
+            .nav-list-paragraph-wrapper {
+              position: absolute;
+              top: 0;
+              display: flex;
+              flex-direction: column;
+              transition: .3s transform;
+            }
+            .nav-list-li-paragraph {
+              margin: 0;
+              display: inline-block;
+            }
+          }
+        }
+      }
+    }
+    .acc-content-wrapper {
+      position: relative;
+      width: 75%;
+      height: 100%;
+      padding-left: 3.5%;
+      @media (min-width: 1600px) {
+        width: 80%;
+      }
+      .acc-content {
+        position: absolute;
+        height: 50%;
+        min-height: 350px;
+        max-height: 700px;
+        box-shadow: 0 0 13px rgba(31, 44, 96, .13);
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        transition: opacity .25s, transform 1s;
+        transform: translateX(0);
+        opacity: 1;
+        overflow: hidden;
+        &.hidden {
+          opacity: 0;
+          transform: translateX(200%);
+        }
+        .acc-slide {
+          min-height: 50px;
+          max-height: 50px;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
+          transition: max-height 1.25s cubic-bezier(0, 1, 0, 1);
+          &.grow {
+            border-left: 3px solid #179c94;
+            max-height: 1000px;
+            transition: max-height 1.25s ease;
+            .fas.fa-chevron-right {
+              transform: rotate(90deg);
+            }
+          }
+        }
+        .acc-head {
+          display: flex;
+          align-items: center;
+          min-height: 50px;
+          cursor: pointer;
+          padding: 0 30px;
+          border-bottom: 1px solid rgba(0,0,0, .125);
+          box-sizing: border-box;
+          @media (min-width: 1600px) {
+            height: 55px;
+          }
+          @media (min-width: 1920px) {
+            height: 60px;
+          }
+          &:hover { background: #ececec }
+          .acc-header {
+            font-family: 'Stellar Regular';
+            margin: 0;
+            font-weight: 500;
+            flex-grow: 1;
+          }
+          .acc-header-icon-box {
+              width: 5%;
+              .fas {
+                transition: .3s transform;
+              }
+          }
+        }
+        .acc-body {
+          display: flex;
+          flex-grow: 1;
+          flex-direction: column;
+          border-bottom: 1px solid rgba(0,0,0, .125);
+          overflow-y: auto;
+          &::-webkit-scrollbar { width: 0; }
+          .acc-paragraph {
+            flex-grow: 1;
+            padding: 5% 30px;
+            font-family: 'Fira Sans', sans-serif;
+            font-size: .9rem;
+            font-weight: 300;
+            p:first-child { margin-top: 0; }
+            p:last-child { margin-bottom: 0; }
+          }
+          .acc-infobox {
+            min-height: 40px;
+            padding: 0 30px;
+            background: #ececec;
+            display: flex;
+            align-items: center;
+            @media (min-width: 1280px) {
+              height: 40px;
+            }
+            @media (min-width: 1600px) {
+              height: 50px;
+            }
+            @media (min-width: 1920px) {
+              height: 55px;
+            }
+            .infobox-paragraph {
+              margin: 0;
+              font-size: 0.6872222222222222rem;
+              color: rgba(0,0,0, .7);
+              font-family: 'Times New Roman';
+            }
+            .infobox-icons {
+              margin-left: 15px;
+              .far {
+                margin: 0 5px;
+                color: rgba(0,0,0, .5);
+                cursor: pointer;
+                &:hover { color: rgb(0,0,0); }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
